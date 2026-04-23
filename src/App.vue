@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 const isDev = import.meta.env.DEV
+const baseUrl = import.meta.env.BASE_URL
 
 const navOpen = ref(false)
 
@@ -71,16 +72,16 @@ async function submitContact() {
 }
 
 const photos = [
-  '/photos/1b0b728a-ed2a-479e-833c-3faea2a65246.jpeg',
-  '/photos/6af518ab-0b44-40f6-b53a-2ed2fad52c92.jpeg',
-  '/photos/79651b91-5f66-41d9-a1e9-629de2e23d10.jpeg',
-  '/photos/7bebeb7f-f42b-45f2-8a0f-501a12827343.jpeg',
-  '/photos/7c87b008-bef0-4b1f-ad91-f5d5649445e6.jpeg',
-  '/photos/7d068cfe-c8ba-4ab0-b8ca-9f99d0f428d9.jpeg',
-  '/photos/b0eaef72-ed1f-4388-b44f-0f57b2e45d5b.jpeg',
-  '/photos/c7aac452-4ade-4f40-ba3a-b6ea80fa8aa9.jpeg',
-  '/photos/ee87fa54-0ca3-4eb0-8aaa-d5fab4f6ff24.jpeg',
-  '/photos/f2310427-a312-49ea-9523-d56625c5d7b9.jpeg',
+  `${baseUrl}photos/1b0b728a-ed2a-479e-833c-3faea2a65246.jpeg`,
+  `${baseUrl}photos/6af518ab-0b44-40f6-b53a-2ed2fad52c92.jpeg`,
+  `${baseUrl}photos/79651b91-5f66-41d9-a1e9-629de2e23d10.jpeg`,
+  `${baseUrl}photos/7bebeb7f-f42b-45f2-8a0f-501a12827343.jpeg`,
+  `${baseUrl}photos/7c87b008-bef0-4b1f-ad91-f5d5649445e6.jpeg`,
+  `${baseUrl}photos/7d068cfe-c8ba-4ab0-b8ca-9f99d0f428d9.jpeg`,
+  `${baseUrl}photos/b0eaef72-ed1f-4388-b44f-0f57b2e45d5b.jpeg`,
+  `${baseUrl}photos/c7aac452-4ade-4f40-ba3a-b6ea80fa8aa9.jpeg`,
+  `${baseUrl}photos/ee87fa54-0ca3-4eb0-8aaa-d5fab4f6ff24.jpeg`,
+  `${baseUrl}photos/f2310427-a312-49ea-9523-d56625c5d7b9.jpeg`,
 ]
 
 const logoSrc = photos[photos.length - 1]
