@@ -96,6 +96,16 @@ const backgroundPhotos = computed(() => {
   ]
 })
 
+const backgroundPositions = computed(() => {
+  return [
+    '50% 18%',
+    '50% 12%',
+    '50% 14%',
+    '50% 16%',
+    '50% 18%',
+  ]
+})
+
 const bgEls = ref([])
 const activeBgIndex = ref(0)
 
@@ -177,13 +187,28 @@ onUnmounted(() => {
       <div
         v-for="(src, i) in backgroundPhotos"
         :key="src + i"
-        class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-0"
+        class="bg-layer absolute inset-0 opacity-0"
         :ref="(el) => setBgEl(i, el)"
-        :style="{ backgroundImage: `url(${src})`, filter: 'saturate(1.08) contrast(1.02) brightness(0.98)' }"
-      />
+      >
+        <div
+          class="bg-fill absolute inset-0"
+          :style="{
+            backgroundImage: `url(${src})`,
+            backgroundPosition: backgroundPositions[i] || '50% 50%',
+          }"
+        />
+        <div
+          class="bg-main absolute inset-0"
+          :style="{
+            backgroundImage: `url(${src})`,
+            backgroundPosition: backgroundPositions[i] || '50% 50%',
+          }"
+        />
+      </div>
       <div class="absolute inset-0 bg-ink-950/0" />
       <div class="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(5,6,10,0.10),rgba(5,6,10,0.02),rgba(5,6,10,0.16))]" />
       <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.16),transparent_60%)]" />
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(5,6,10,0.38),rgba(5,6,10,0.18),rgba(5,6,10,0.50))]" />
     </div>
 
     <div
@@ -511,3 +536,31 @@ onUnmounted(() => {
     </main>
   </div>
 </template>
+
+<style scoped>
+.bg-layer {
+  will-change: opacity;
+}
+
+.bg-fill,
+.bg-main {
+  background-repeat: no-repeat;
+}
+
+.bg-fill {
+  background-size: cover;
+  filter: blur(18px) saturate(1.12) contrast(1.02) brightness(0.9);
+  transform: scale(1.12);
+}
+
+.bg-main {
+  background-size: cover;
+  filter: saturate(1.08) contrast(1.02) brightness(0.98);
+}
+
+@media (min-width: 768px) {
+  .bg-main {
+    background-size: contain;
+  }
+}
+</style>
