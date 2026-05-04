@@ -5,8 +5,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const isDev = import.meta.env.DEV
-
 const navOpen = ref(false)
 
 const calendlyUrl = 'https://calendly.com/alyosperformance'
@@ -86,73 +84,12 @@ const photos = [
 const logoSrc = photos[photos.length - 1]
 const galleryPhotos = photos.slice(0, -1)
 
-const backgroundPhotos = computed(() => {
-  return [
-    photos[4],
-    photos[1],
-    photos[3],
-    photos[6],
-    photos[4],
-  ]
-})
-
-const backgroundPositions = computed(() => {
-  return [
-    '50% 30%',
-    '50% 28%',
-    '50% 30%',
-    '50% 32%',
-    '50% 30%',
-  ]
-})
-
-const bgEls = ref([])
-const activeBgIndex = ref(0)
-
-function setBgEl(index, el) {
-  if (!el) return
-  bgEls.value[index] = el
-}
-
-function setActiveBackground(index) {
-  activeBgIndex.value = index
-  const els = bgEls.value
-  if (!els?.length) return
-
-  els.forEach((el, i) => {
-    gsap.set(el, { willChange: 'opacity' })
-    gsap.to(el, {
-      opacity: i === index ? 1 : 0,
-      duration: 0.8,
-      ease: 'power2.out',
-      overwrite: true,
-    })
-  })
-}
-
 let ctx
 
 onMounted(async () => {
   await nextTick()
 
   ctx = gsap.context(() => {
-    if (isDev) console.log('[bg] layers:', bgEls.value.length)
-    setActiveBackground(0)
-
-    const sections = gsap.utils.toArray('[data-bg]')
-    sections.forEach((section) => {
-      const idx = Number(section.getAttribute('data-bg') || '0')
-      ScrollTrigger.create({
-        trigger: section,
-        start: 'top 55%',
-        end: 'bottom 45%',
-        onEnter: () => setActiveBackground(idx),
-        onEnterBack: () => setActiveBackground(idx),
-      })
-    })
-
-    ScrollTrigger.refresh()
-
     gsap.from('[data-hero]', {
       opacity: 0,
       y: 16,
@@ -182,43 +119,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="relative min-h-screen text-white">
-    <div class="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-      <div
-        v-for="(src, i) in backgroundPhotos"
-        :key="src + i"
-        class="bg-layer absolute inset-0 opacity-0"
-        :ref="(el) => setBgEl(i, el)"
-      >
-        <div
-          class="bg-fill absolute inset-0"
-          :style="{
-            backgroundImage: `url(${src})`,
-            backgroundPosition: backgroundPositions[i] || '50% 50%',
-          }"
-        />
-        <div
-          class="bg-main absolute inset-0"
-          :style="{
-            backgroundImage: `url(${src})`,
-            backgroundPosition: backgroundPositions[i] || '50% 50%',
-          }"
-        />
-      </div>
-      <div class="absolute inset-0 bg-ink-950/55" />
-      <div class="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(2,3,7,0.78),rgba(2,3,7,0.46),rgba(2,3,7,0.84))]" />
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(16,185,129,0.10),transparent_42%)]" />
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(2,3,7,0.38),rgba(2,3,7,0.48),rgba(2,3,7,0.86))]" />
-    </div>
+  <div class="relative min-h-screen bg-black text-white">
+    <div class="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(circle_at_top_left,rgba(16,185,129,0.10),transparent_32%),linear-gradient(180deg,#05060a_0%,#000_42%,#05060a_100%)]" />
 
-    <div
-      v-if="isDev"
-      class="fixed bottom-4 right-4 z-[60] rounded-full border border-white/15 bg-black/40 px-3 py-1 text-xs text-white backdrop-blur"
-    >
-      bg: {{ activeBgIndex }}
-    </div>
-
-    <header class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/85 backdrop-blur-2xl">
+    <header class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black">
       <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
         <a href="#top" class="flex items-center gap-3 font-semibold tracking-tight">
           <img
@@ -244,7 +148,7 @@ onUnmounted(() => {
         </nav>
 
         <button
-          class="rounded-lg border border-white/10 bg-black/45 px-3 py-2 text-sm text-white/90 md:hidden"
+          class="rounded-lg border border-white/10 bg-ink-950 px-3 py-2 text-sm text-white/90 md:hidden"
           type="button"
           @click="navOpen = !navOpen"
         >
@@ -270,7 +174,7 @@ onUnmounted(() => {
     </header>
 
     <main id="top" class="relative z-10 pt-20">
-      <section class="relative" data-bg="0">
+      <section class="relative">
         <div class="mx-auto flex min-h-[calc(100vh-80px)] max-w-6xl items-center px-5 py-16 md:py-24">
           <div class="max-w-2xl">
             <p data-hero class="text-sm font-medium tracking-wide text-white/70">Massage & récupération</p>
@@ -293,7 +197,7 @@ onUnmounted(() => {
                 Prendre rendez-vous
               </a>
               <a
-                class="rounded-full border border-white/15 bg-black/45 px-5 py-3 text-sm font-medium text-white/90 hover:bg-black/50"
+                class="rounded-full border border-white/15 bg-ink-950 px-5 py-3 text-sm font-medium text-white/90 hover:bg-ink-900"
                 href="#prestations"
               >
                 Voir les prestations
@@ -301,11 +205,11 @@ onUnmounted(() => {
             </div>
 
             <div data-hero class="mt-10 grid grid-cols-2 gap-4 text-sm text-white/75">
-              <div class="rounded-2xl border border-white/10 bg-black/50 p-4 backdrop-blur-2xl shadow-lg shadow-black/40">
+              <div class="rounded-2xl border border-white/10 bg-ink-950 p-4 shadow-lg shadow-black/40">
                 <p class="font-medium text-white">Séances ciblées</p>
                 <p class="mt-1 text-white/70">Sport, détente, mobilité</p>
               </div>
-              <div class="rounded-2xl border border-white/10 bg-black/50 p-4 backdrop-blur-2xl shadow-lg shadow-black/40">
+              <div class="rounded-2xl border border-white/10 bg-ink-950 p-4 shadow-lg shadow-black/40">
                 <p class="font-medium text-white">Suivi simple</p>
                 <p class="mt-1 text-white/70">WhatsApp / Calendly</p>
               </div>
@@ -314,7 +218,7 @@ onUnmounted(() => {
         </div>
       </section>
 
-      <section id="apropos" class="mx-auto max-w-6xl px-5 py-16 md:py-24" data-bg="1">
+      <section id="apropos" class="mx-auto max-w-6xl px-5 py-16 md:py-24">
         <div data-reveal class="grid gap-10 md:grid-cols-2 md:items-start">
           <div>
             <p class="text-sm font-medium tracking-wide text-white/70">À propos</p>
@@ -325,11 +229,11 @@ onUnmounted(() => {
             </p>
           </div>
           <div class="grid gap-4">
-            <div class="rounded-2xl border border-white/10 bg-black/50 p-5 backdrop-blur-xl">
+            <div class="rounded-2xl border border-white/10 bg-ink-950 p-5">
               <p class="font-medium text-white">Mission</p>
               <p class="mt-2 text-white/70">Améliorer ton confort au quotidien et t’aider à bouger sans gêne.</p>
             </div>
-            <div class="rounded-2xl border border-white/10 bg-black/50 p-5 backdrop-blur-xl">
+            <div class="rounded-2xl border border-white/10 bg-ink-950 p-5">
               <p class="font-medium text-white">Objectifs</p>
               <p class="mt-2 text-white/70">Prévenir les douleurs, optimiser la mobilité et soutenir la performance.</p>
             </div>
@@ -337,7 +241,7 @@ onUnmounted(() => {
         </div>
       </section>
 
-      <section id="prestations" class="border-y border-white/10" data-bg="2">
+      <section id="prestations" class="border-y border-white/10 bg-ink-950">
         <div class="mx-auto max-w-6xl px-5 py-16 md:py-24">
           <div data-reveal class="max-w-2xl">
             <p class="text-sm font-medium tracking-wide text-white/70">Prestations</p>
@@ -348,22 +252,22 @@ onUnmounted(() => {
           </div>
 
           <div class="mt-10 grid gap-5 md:grid-cols-2">
-            <article data-reveal class="rounded-2xl border border-white/10 bg-black/55 p-6 backdrop-blur-2xl shadow-lg shadow-black/40">
+            <article data-reveal class="rounded-2xl border border-white/10 bg-black p-6 shadow-lg shadow-black/40">
               <h3 class="text-lg font-semibold">Massage Sportif</h3>
               <p class="mt-2 text-white/70">Récupération musculaire, tensions, préparation / retour d’effort.</p>
               <p class="mt-4 text-sm font-medium text-white/80">Disponible</p>
             </article>
-            <article data-reveal class="rounded-2xl border border-white/10 bg-black/55 p-6 backdrop-blur-2xl shadow-lg shadow-black/40">
+            <article data-reveal class="rounded-2xl border border-white/10 bg-black p-6 shadow-lg shadow-black/40">
               <h3 class="text-lg font-semibold">Cupping Therapy</h3>
               <p class="mt-2 text-white/70">Ventouses pour relâcher les adhérences et améliorer la souplesse.</p>
               <p class="mt-4 text-sm font-medium text-white/80">Sur demande</p>
             </article>
-            <article data-reveal class="rounded-2xl border border-white/10 bg-black/55 p-6 backdrop-blur-2xl shadow-lg shadow-black/40">
+            <article data-reveal class="rounded-2xl border border-white/10 bg-black p-6 shadow-lg shadow-black/40">
               <h3 class="text-lg font-semibold">Préparation Physique</h3>
               <p class="mt-2 text-white/70">Programme sur mesure selon tes objectifs et ton niveau.</p>
               <p class="mt-4 text-sm font-medium text-white/80">Bientôt</p>
             </article>
-            <article data-reveal class="rounded-2xl border border-white/10 bg-black/55 p-6 backdrop-blur-2xl shadow-lg shadow-black/40">
+            <article data-reveal class="rounded-2xl border border-white/10 bg-black p-6 shadow-lg shadow-black/40">
               <h3 class="text-lg font-semibold">Ostéo Massage</h3>
               <p class="mt-2 text-white/70">Travail ciblé pour la mobilité et les zones sensibles.</p>
               <p class="mt-4 text-sm font-medium text-white/80">Disponible</p>
@@ -372,7 +276,7 @@ onUnmounted(() => {
         </div>
       </section>
 
-      <section id="galerie" class="mx-auto max-w-6xl px-5 py-16 md:py-24" data-bg="3">
+      <section id="galerie" class="mx-auto max-w-6xl px-5 py-16 md:py-24">
         <div data-reveal class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div class="max-w-2xl">
             <p class="text-sm font-medium tracking-wide text-white/70">Visuels</p>
@@ -386,7 +290,7 @@ onUnmounted(() => {
             v-for="src in galleryPhotos"
             :key="src"
             data-reveal
-            class="group relative overflow-hidden rounded-2xl border border-white/10 bg-black/55 backdrop-blur-2xl shadow-lg shadow-black/40"
+            class="group relative overflow-hidden rounded-2xl border border-white/10 bg-ink-950 shadow-lg shadow-black/40"
           >
             <img
               class="h-56 w-full object-cover object-[50%_20%] transition duration-500 group-hover:scale-[1.03]"
@@ -397,7 +301,7 @@ onUnmounted(() => {
         </div>
       </section>
 
-      <section id="contact" class="border-t border-white/10" data-bg="4">
+      <section id="contact" class="border-t border-white/10 bg-ink-950">
         <div class="mx-auto grid max-w-6xl gap-8 px-5 py-16 md:grid-cols-2 md:py-24">
           <div data-reveal>
             <p class="text-sm font-medium tracking-wide text-white/70">Contact</p>
@@ -405,7 +309,7 @@ onUnmounted(() => {
             <p class="mt-5 leading-relaxed text-white/75">
               Dis-moi ce dont tu as besoin (zone, douleur, objectif). Je te propose un créneau et un format adapté.
             </p>
-            <div class="mt-8 rounded-2xl border border-white/10 bg-black/55 p-4 backdrop-blur-2xl shadow-lg shadow-black/40">
+            <div class="mt-8 rounded-2xl border border-white/10 bg-black p-4 shadow-lg shadow-black/40">
               <p class="text-sm font-medium text-white">Calendrier</p>
               <p class="mt-1 text-sm text-white/70">Choisis un créneau directement dans le calendrier.</p>
               <div class="mt-4 overflow-hidden rounded-xl border border-white/10 bg-ink-950">
@@ -418,7 +322,7 @@ onUnmounted(() => {
               </div>
               <div class="mt-4 flex flex-wrap gap-3">
                 <a
-                  class="rounded-full border border-white/15 bg-black/45 px-5 py-3 text-sm font-medium text-white/90 hover:bg-black/60"
+                  class="rounded-full border border-white/15 bg-ink-950 px-5 py-3 text-sm font-medium text-white/90 hover:bg-ink-900"
                   :href="calendlyUrl"
                   target="_blank"
                   rel="noreferrer"
@@ -429,7 +333,7 @@ onUnmounted(() => {
             </div>
           </div>
 
-          <div data-reveal class="rounded-2xl border border-white/10 bg-black/55 p-6 backdrop-blur-2xl shadow-lg shadow-black/40">
+          <div data-reveal class="rounded-2xl border border-white/10 bg-black p-6 shadow-lg shadow-black/40">
             <p class="text-sm font-medium text-white">Formulaire de contact</p>
             <p class="mt-1 text-sm text-white/70">
               Tu peux envoyer un message, même si tu ne trouves pas de créneau parfait.
@@ -441,7 +345,7 @@ onUnmounted(() => {
                 <input
                   id="name"
                   v-model="form.name"
-                  class="h-11 rounded-xl border border-white/10 bg-ink-950/60 px-4 text-sm text-white outline-none ring-accent-500/40 placeholder:text-white/40 focus:ring-2"
+                  class="h-11 rounded-xl border border-white/10 bg-ink-950 px-4 text-sm text-white outline-none ring-accent-500/40 placeholder:text-white/40 focus:ring-2"
                   type="text"
                   autocomplete="name"
                   placeholder="Votre nom"
@@ -455,7 +359,7 @@ onUnmounted(() => {
                   <input
                     id="email"
                     v-model="form.email"
-                    class="h-11 rounded-xl border border-white/10 bg-ink-950/60 px-4 text-sm text-white outline-none ring-accent-500/40 placeholder:text-white/40 focus:ring-2"
+                    class="h-11 rounded-xl border border-white/10 bg-ink-950 px-4 text-sm text-white outline-none ring-accent-500/40 placeholder:text-white/40 focus:ring-2"
                     type="email"
                     autocomplete="email"
                     placeholder="vous@email.com"
@@ -467,7 +371,7 @@ onUnmounted(() => {
                   <input
                     id="phone"
                     v-model="form.phone"
-                    class="h-11 rounded-xl border border-white/10 bg-ink-950/60 px-4 text-sm text-white outline-none ring-accent-500/40 placeholder:text-white/40 focus:ring-2"
+                    class="h-11 rounded-xl border border-white/10 bg-ink-950 px-4 text-sm text-white outline-none ring-accent-500/40 placeholder:text-white/40 focus:ring-2"
                     type="tel"
                     autocomplete="tel"
                     placeholder="+32 ..."
@@ -480,7 +384,7 @@ onUnmounted(() => {
                 <textarea
                   id="message"
                   v-model="form.message"
-                  class="min-h-[120px] resize-y rounded-xl border border-white/10 bg-ink-950/60 px-4 py-3 text-sm text-white outline-none ring-accent-500/40 placeholder:text-white/40 focus:ring-2"
+                  class="min-h-[120px] resize-y rounded-xl border border-white/10 bg-ink-950 px-4 py-3 text-sm text-white outline-none ring-accent-500/40 placeholder:text-white/40 focus:ring-2"
                   placeholder="Expliquez votre besoin (douleurs, zone, objectif, disponibilité…)"
                   required
                 />
@@ -516,7 +420,7 @@ onUnmounted(() => {
               </div>
               <div class="pt-2">
                 <a
-                  class="inline-flex rounded-full border border-white/15 bg-black/45 px-4 py-2 font-medium text-white/90 hover:bg-black/50"
+                  class="inline-flex rounded-full border border-white/15 bg-ink-950 px-4 py-2 font-medium text-white/90 hover:bg-ink-900"
                   href="#top"
                 >
                   Retour en haut
@@ -537,30 +441,3 @@ onUnmounted(() => {
   </div>
 </template>
 
-<style scoped>
-.bg-layer {
-  will-change: opacity;
-}
-
-.bg-fill,
-.bg-main {
-  background-repeat: no-repeat;
-}
-
-.bg-fill {
-  background-size: cover;
-  filter: blur(16px) grayscale(0.18) saturate(0.95) contrast(1.12) brightness(0.44);
-  transform: scale(1.12);
-}
-
-.bg-main {
-  background-size: cover;
-  filter: grayscale(0.10) saturate(0.95) contrast(1.12) brightness(0.62);
-}
-
-@media (min-width: 768px) {
-  .bg-main {
-    background-size: contain;
-  }
-}
-</style>
