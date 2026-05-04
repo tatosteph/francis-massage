@@ -205,10 +205,10 @@ onUnmounted(() => {
           }"
         />
       </div>
-      <div class="absolute inset-0 bg-ink-950/0" />
-      <div class="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(5,6,10,0.10),rgba(5,6,10,0.02),rgba(5,6,10,0.16))]" />
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.16),transparent_60%)]" />
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(5,6,10,0.38),rgba(5,6,10,0.18),rgba(5,6,10,0.50))]" />
+      <div class="absolute inset-0 bg-ink-950/35" />
+      <div class="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(5,6,10,0.58),rgba(5,6,10,0.32),rgba(5,6,10,0.72))]" />
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.05),transparent_56%)]" />
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(5,6,10,0.48),rgba(5,6,10,0.36),rgba(5,6,10,0.76))]" />
     </div>
 
     <div
@@ -218,7 +218,7 @@ onUnmounted(() => {
       bg: {{ activeBgIndex }}
     </div>
 
-    <header class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-ink-950/25 backdrop-blur-2xl">
+    <header class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-ink-950/75 backdrop-blur-2xl">
       <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
         <a href="#top" class="flex items-center gap-3 font-semibold tracking-tight">
           <img
@@ -549,13 +549,13 @@ onUnmounted(() => {
 
 .bg-fill {
   background-size: cover;
-  filter: blur(18px) saturate(1.12) contrast(1.02) brightness(0.9);
+  filter: blur(18px) saturate(1.06) contrast(1.03) brightness(0.62);
   transform: scale(1.12);
 }
 
 .bg-main {
   background-size: cover;
-  filter: saturate(1.08) contrast(1.02) brightness(0.98);
+  filter: saturate(1.02) contrast(1.03) brightness(0.72);
 }
 
 @media (min-width: 768px) {
