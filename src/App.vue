@@ -98,11 +98,11 @@ const backgroundPhotos = computed(() => {
 
 const backgroundPositions = computed(() => {
   return [
-    '50% 18%',
-    '50% 12%',
-    '50% 14%',
-    '50% 16%',
-    '50% 18%',
+    '50% 30%',
+    '50% 28%',
+    '50% 30%',
+    '50% 32%',
+    '50% 30%',
   ]
 })
 
@@ -205,10 +205,10 @@ onUnmounted(() => {
           }"
         />
       </div>
-      <div class="absolute inset-0 bg-ink-950/35" />
-      <div class="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(5,6,10,0.58),rgba(5,6,10,0.32),rgba(5,6,10,0.72))]" />
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.05),transparent_56%)]" />
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(5,6,10,0.48),rgba(5,6,10,0.36),rgba(5,6,10,0.76))]" />
+      <div class="absolute inset-0 bg-ink-950/55" />
+      <div class="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(2,3,7,0.78),rgba(2,3,7,0.46),rgba(2,3,7,0.84))]" />
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(16,185,129,0.10),transparent_42%)]" />
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(2,3,7,0.38),rgba(2,3,7,0.48),rgba(2,3,7,0.86))]" />
     </div>
 
     <div
@@ -218,7 +218,7 @@ onUnmounted(() => {
       bg: {{ activeBgIndex }}
     </div>
 
-    <header class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-ink-950/75 backdrop-blur-2xl">
+    <header class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/85 backdrop-blur-2xl">
       <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
         <a href="#top" class="flex items-center gap-3 font-semibold tracking-tight">
           <img
@@ -244,7 +244,7 @@ onUnmounted(() => {
         </nav>
 
         <button
-          class="rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white/90 md:hidden"
+          class="rounded-lg border border-white/10 bg-black/45 px-3 py-2 text-sm text-white/90 md:hidden"
           type="button"
           @click="navOpen = !navOpen"
         >
@@ -293,7 +293,7 @@ onUnmounted(() => {
                 Prendre rendez-vous
               </a>
               <a
-                class="rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-medium text-white/90 hover:bg-white/10"
+                class="rounded-full border border-white/15 bg-black/45 px-5 py-3 text-sm font-medium text-white/90 hover:bg-black/50"
                 href="#prestations"
               >
                 Voir les prestations
@@ -301,11 +301,11 @@ onUnmounted(() => {
             </div>
 
             <div data-hero class="mt-10 grid grid-cols-2 gap-4 text-sm text-white/75">
-              <div class="rounded-2xl border border-white/12 bg-white/10 p-4 backdrop-blur-2xl shadow-lg shadow-black/20">
+              <div class="rounded-2xl border border-white/10 bg-black/50 p-4 backdrop-blur-2xl shadow-lg shadow-black/40">
                 <p class="font-medium text-white">Séances ciblées</p>
                 <p class="mt-1 text-white/70">Sport, détente, mobilité</p>
               </div>
-              <div class="rounded-2xl border border-white/12 bg-white/10 p-4 backdrop-blur-2xl shadow-lg shadow-black/20">
+              <div class="rounded-2xl border border-white/10 bg-black/50 p-4 backdrop-blur-2xl shadow-lg shadow-black/40">
                 <p class="font-medium text-white">Suivi simple</p>
                 <p class="mt-1 text-white/70">WhatsApp / Calendly</p>
               </div>
@@ -325,11 +325,11 @@ onUnmounted(() => {
             </p>
           </div>
           <div class="grid gap-4">
-            <div class="rounded-2xl border border-white/12 bg-white/10 p-5 backdrop-blur-xl">
+            <div class="rounded-2xl border border-white/10 bg-black/50 p-5 backdrop-blur-xl">
               <p class="font-medium text-white">Mission</p>
               <p class="mt-2 text-white/70">Améliorer ton confort au quotidien et t’aider à bouger sans gêne.</p>
             </div>
-            <div class="rounded-2xl border border-white/12 bg-white/10 p-5 backdrop-blur-xl">
+            <div class="rounded-2xl border border-white/10 bg-black/50 p-5 backdrop-blur-xl">
               <p class="font-medium text-white">Objectifs</p>
               <p class="mt-2 text-white/70">Prévenir les douleurs, optimiser la mobilité et soutenir la performance.</p>
             </div>
@@ -348,22 +348,22 @@ onUnmounted(() => {
           </div>
 
           <div class="mt-10 grid gap-5 md:grid-cols-2">
-            <article data-reveal class="rounded-2xl border border-white/12 bg-white/12 p-6 backdrop-blur-2xl shadow-lg shadow-black/20">
+            <article data-reveal class="rounded-2xl border border-white/10 bg-black/55 p-6 backdrop-blur-2xl shadow-lg shadow-black/40">
               <h3 class="text-lg font-semibold">Massage Sportif</h3>
               <p class="mt-2 text-white/70">Récupération musculaire, tensions, préparation / retour d’effort.</p>
               <p class="mt-4 text-sm font-medium text-white/80">Disponible</p>
             </article>
-            <article data-reveal class="rounded-2xl border border-white/12 bg-white/12 p-6 backdrop-blur-2xl shadow-lg shadow-black/20">
+            <article data-reveal class="rounded-2xl border border-white/10 bg-black/55 p-6 backdrop-blur-2xl shadow-lg shadow-black/40">
               <h3 class="text-lg font-semibold">Cupping Therapy</h3>
               <p class="mt-2 text-white/70">Ventouses pour relâcher les adhérences et améliorer la souplesse.</p>
               <p class="mt-4 text-sm font-medium text-white/80">Sur demande</p>
             </article>
-            <article data-reveal class="rounded-2xl border border-white/12 bg-white/12 p-6 backdrop-blur-2xl shadow-lg shadow-black/20">
+            <article data-reveal class="rounded-2xl border border-white/10 bg-black/55 p-6 backdrop-blur-2xl shadow-lg shadow-black/40">
               <h3 class="text-lg font-semibold">Préparation Physique</h3>
               <p class="mt-2 text-white/70">Programme sur mesure selon tes objectifs et ton niveau.</p>
               <p class="mt-4 text-sm font-medium text-white/80">Bientôt</p>
             </article>
-            <article data-reveal class="rounded-2xl border border-white/12 bg-white/12 p-6 backdrop-blur-2xl shadow-lg shadow-black/20">
+            <article data-reveal class="rounded-2xl border border-white/10 bg-black/55 p-6 backdrop-blur-2xl shadow-lg shadow-black/40">
               <h3 class="text-lg font-semibold">Ostéo Massage</h3>
               <p class="mt-2 text-white/70">Travail ciblé pour la mobilité et les zones sensibles.</p>
               <p class="mt-4 text-sm font-medium text-white/80">Disponible</p>
@@ -386,7 +386,7 @@ onUnmounted(() => {
             v-for="src in galleryPhotos"
             :key="src"
             data-reveal
-            class="group relative overflow-hidden rounded-2xl border border-white/12 bg-white/12 backdrop-blur-2xl shadow-lg shadow-black/20"
+            class="group relative overflow-hidden rounded-2xl border border-white/10 bg-black/55 backdrop-blur-2xl shadow-lg shadow-black/40"
           >
             <img
               class="h-56 w-full object-cover object-[50%_20%] transition duration-500 group-hover:scale-[1.03]"
@@ -405,7 +405,7 @@ onUnmounted(() => {
             <p class="mt-5 leading-relaxed text-white/75">
               Dis-moi ce dont tu as besoin (zone, douleur, objectif). Je te propose un créneau et un format adapté.
             </p>
-            <div class="mt-8 rounded-2xl border border-white/12 bg-white/12 p-4 backdrop-blur-2xl shadow-lg shadow-black/20">
+            <div class="mt-8 rounded-2xl border border-white/10 bg-black/55 p-4 backdrop-blur-2xl shadow-lg shadow-black/40">
               <p class="text-sm font-medium text-white">Calendrier</p>
               <p class="mt-1 text-sm text-white/70">Choisis un créneau directement dans le calendrier.</p>
               <div class="mt-4 overflow-hidden rounded-xl border border-white/10 bg-ink-950">
@@ -418,7 +418,7 @@ onUnmounted(() => {
               </div>
               <div class="mt-4 flex flex-wrap gap-3">
                 <a
-                  class="rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-medium text-white/90 hover:bg-white/10"
+                  class="rounded-full border border-white/15 bg-black/45 px-5 py-3 text-sm font-medium text-white/90 hover:bg-black/60"
                   :href="calendlyUrl"
                   target="_blank"
                   rel="noreferrer"
@@ -429,7 +429,7 @@ onUnmounted(() => {
             </div>
           </div>
 
-          <div data-reveal class="rounded-2xl border border-white/12 bg-white/12 p-6 backdrop-blur-2xl shadow-lg shadow-black/20">
+          <div data-reveal class="rounded-2xl border border-white/10 bg-black/55 p-6 backdrop-blur-2xl shadow-lg shadow-black/40">
             <p class="text-sm font-medium text-white">Formulaire de contact</p>
             <p class="mt-1 text-sm text-white/70">
               Tu peux envoyer un message, même si tu ne trouves pas de créneau parfait.
@@ -516,7 +516,7 @@ onUnmounted(() => {
               </div>
               <div class="pt-2">
                 <a
-                  class="inline-flex rounded-full border border-white/15 bg-white/5 px-4 py-2 font-medium text-white/90 hover:bg-white/10"
+                  class="inline-flex rounded-full border border-white/15 bg-black/45 px-4 py-2 font-medium text-white/90 hover:bg-black/50"
                   href="#top"
                 >
                   Retour en haut
@@ -549,13 +549,13 @@ onUnmounted(() => {
 
 .bg-fill {
   background-size: cover;
-  filter: blur(18px) saturate(1.06) contrast(1.03) brightness(0.62);
+  filter: blur(16px) grayscale(0.18) saturate(0.95) contrast(1.12) brightness(0.44);
   transform: scale(1.12);
 }
 
 .bg-main {
   background-size: cover;
-  filter: saturate(1.02) contrast(1.03) brightness(0.72);
+  filter: grayscale(0.10) saturate(0.95) contrast(1.12) brightness(0.62);
 }
 
 @media (min-width: 768px) {
