@@ -82,7 +82,53 @@ const photos = [
 ]
 
 const logoSrc = photos[photos.length - 1]
-const galleryPhotos = photos.slice(0, -1)
+const galleryItems = [
+  {
+    src: photos[0],
+    title: 'Massage ciblé',
+    label: 'Soin',
+  },
+  {
+    src: photos[1],
+    title: 'Récupération sportive',
+    label: 'Sport',
+  },
+  {
+    src: photos[2],
+    title: 'Travail musculaire',
+    label: 'Mobilité',
+  },
+  {
+    src: photos[3],
+    title: 'Massage profond',
+    label: 'Tensions',
+  },
+  {
+    src: photos[4],
+    title: 'Séance bien-être',
+    label: 'Relaxation',
+  },
+  {
+    src: photos[5],
+    title: 'Accompagnement',
+    label: 'Suivi',
+  },
+  {
+    src: photos[6],
+    title: 'Technique manuelle',
+    label: 'Précision',
+  },
+  {
+    src: photos[7],
+    title: 'Préparation physique',
+    label: 'Performance',
+  },
+  {
+    src: photos[8],
+    title: 'Ambiance cabinet',
+    label: 'Lieu',
+  },
+]
 
 let ctx
 
@@ -287,16 +333,24 @@ onUnmounted(() => {
 
         <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <div
-            v-for="src in galleryPhotos"
-            :key="src"
+            v-for="item in galleryItems"
+            :key="item.src"
             data-reveal
             class="group relative overflow-hidden rounded-2xl border border-white/10 bg-ink-950 shadow-lg shadow-black/40"
           >
             <img
               class="h-56 w-full object-cover object-[50%_20%] transition duration-500 group-hover:scale-[1.03]"
-              :src="src"
-              alt=""
+              :src="item.src"
+              :alt="item.title"
             />
+            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/80 to-transparent p-4 pt-12">
+              <div class="flex items-end justify-between gap-3">
+                <p class="text-sm font-medium text-white">{{ item.title }}</p>
+                <span class="shrink-0 rounded-full bg-accent-500 px-3 py-1 text-xs font-semibold text-ink-950">
+                  {{ item.label }}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
