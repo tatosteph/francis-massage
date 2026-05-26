@@ -8,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger)
 const navOpen = ref(false)
 
 const calendlyUrl = 'https://calendly.com/alyosperformance'
-const calendlyEmbedUrl = `${calendlyUrl}?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=05060a&text_color=ffffff&primary_color=10b981`
+const calendlyEmbedUrl = `${calendlyUrl}?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=f5f0e8`
 const formspreeEndpoint = ''
 
 const form = ref({
@@ -119,28 +119,28 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="relative min-h-screen bg-black text-white">
-    <div class="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(circle_at_top_left,rgba(16,185,129,0.10),transparent_32%),linear-gradient(180deg,#05060a_0%,#000_42%,#05060a_100%)]" />
+  <div class="relative min-h-screen bg-[#050505] text-[#f5f0e8]">
+    <div class="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(circle_at_top_left,rgba(245,240,232,0.08),transparent_30%),linear-gradient(180deg,#050505_0%,#101010_46%,#050505_100%)]" />
 
-    <header class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black">
-      <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
+    <header class="fixed inset-x-0 top-0 z-50 border-b border-[#f5f0e8]/10 bg-[#050505]">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-5">
         <a href="#top" class="flex items-center gap-3 font-semibold tracking-tight">
           <img
             :src="logoSrc"
             alt="Logo"
-            class="h-9 w-9 rounded-lg object-contain"
+            class="h-10 w-10 rounded-full border border-[#f5f0e8]/20 object-contain"
             loading="eager"
             decoding="async"
           />
         </a>
 
-        <nav class="hidden items-center gap-7 text-sm text-white/80 md:flex">
-          <a class="hover:text-white" href="#apropos">À propos</a>
-          <a class="hover:text-white" href="#prestations">Prestations</a>
-          <a class="hover:text-white" href="#galerie">Galerie</a>
-          <a class="hover:text-white" href="#contact">Contact</a>
+        <nav class="hidden items-center gap-8 text-xs font-medium uppercase tracking-[0.22em] text-[#f5f0e8]/70 md:flex">
+          <a class="hover:text-[#f5f0e8]" href="#apropos">Concept</a>
+          <a class="hover:text-[#f5f0e8]" href="#prestations">Services</a>
+          <a class="hover:text-[#f5f0e8]" href="#galerie">Studio</a>
+          <a class="hover:text-[#f5f0e8]" href="#contact">Contact</a>
           <a
-            class="rounded-full bg-accent-500 px-4 py-2 font-medium text-ink-950 shadow-sm shadow-accent-500/30 hover:bg-accent-400"
+            class="rounded-full bg-[#f5f0e8] px-5 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-black hover:bg-white"
             href="#contact"
           >
             Réserver
@@ -148,7 +148,7 @@ onUnmounted(() => {
         </nav>
 
         <button
-          class="rounded-lg border border-white/10 bg-ink-950 px-3 py-2 text-sm text-white/90 md:hidden"
+          class="rounded-full border border-[#f5f0e8]/15 bg-black px-4 py-2 text-xs uppercase tracking-[0.18em] text-[#f5f0e8] md:hidden"
           type="button"
           @click="navOpen = !navOpen"
         >
@@ -156,14 +156,14 @@ onUnmounted(() => {
         </button>
       </div>
 
-      <div v-if="navOpen" class="border-t border-white/10 bg-ink-950 md:hidden">
-        <div class="mx-auto grid max-w-6xl gap-2 px-5 py-4 text-sm text-white/80">
-          <a class="py-2 hover:text-white" href="#apropos" @click="navOpen = false">À propos</a>
-          <a class="py-2 hover:text-white" href="#prestations" @click="navOpen = false">Prestations</a>
-          <a class="py-2 hover:text-white" href="#galerie" @click="navOpen = false">Galerie</a>
-          <a class="py-2 hover:text-white" href="#contact" @click="navOpen = false">Contact</a>
+      <div v-if="navOpen" class="border-t border-[#f5f0e8]/10 bg-[#050505] md:hidden">
+        <div class="mx-auto grid max-w-7xl gap-2 px-5 py-5 text-sm text-[#f5f0e8]/80">
+          <a class="py-2 hover:text-[#f5f0e8]" href="#apropos" @click="navOpen = false">Concept</a>
+          <a class="py-2 hover:text-[#f5f0e8]" href="#prestations" @click="navOpen = false">Services</a>
+          <a class="py-2 hover:text-[#f5f0e8]" href="#galerie" @click="navOpen = false">Studio</a>
+          <a class="py-2 hover:text-[#f5f0e8]" href="#contact" @click="navOpen = false">Contact</a>
           <a
-            class="mt-2 inline-flex w-fit rounded-full bg-accent-500 px-4 py-2 font-medium text-ink-950"
+            class="mt-2 inline-flex w-fit rounded-full bg-[#f5f0e8] px-5 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-black"
             href="#contact"
             @click="navOpen = false"
           >
@@ -175,114 +175,127 @@ onUnmounted(() => {
 
     <main id="top" class="relative z-10 pt-20">
       <section class="relative">
-        <div class="mx-auto flex min-h-[calc(100vh-80px)] max-w-6xl items-center px-5 py-16 md:py-24">
-          <div class="max-w-2xl">
-            <p data-hero class="text-sm font-medium tracking-wide text-white/70">Massage & récupération</p>
+        <div class="mx-auto flex min-h-[calc(100vh-80px)] max-w-7xl items-center px-5 py-16 md:py-28">
+          <div class="max-w-5xl">
+            <p data-hero class="text-xs font-semibold uppercase tracking-[0.32em] text-[#f5f0e8]/60">Massage • Recovery • Performance</p>
             <h1
               data-hero
-              class="mt-4 text-4xl font-semibold leading-tight tracking-tight drop-shadow-[0_10px_30px_rgba(0,0,0,0.55)] md:text-5xl"
+              class="mt-6 max-w-5xl text-5xl font-semibold uppercase leading-[0.92] tracking-[-0.06em] md:text-8xl lg:text-9xl"
             >
-              Soulage tes tensions.
-              <span class="text-white/70">Retrouve ton énergie.</span>
+              Move better.
+              <span class="block text-[#f5f0e8]/55">Recover deeper.</span>
             </h1>
-            <p data-hero class="mt-6 text-base leading-relaxed text-white/75">
-              Une approche professionnelle, orientée bien-être et performance, avec des séances adaptées à ton corps,
-              ton rythme et tes objectifs.
+            <p data-hero class="mt-8 max-w-2xl text-lg leading-relaxed text-[#f5f0e8]/70">
+              Une expérience premium dédiée à la récupération, à la mobilité et au bien-être du corps. Des séances ciblées,
+              simples à réserver, pensées pour accompagner ton rythme et tes objectifs.
             </p>
-            <div data-hero class="mt-8 flex flex-wrap items-center gap-3">
+            <div data-hero class="mt-10 flex flex-wrap items-center gap-3">
               <a
-                class="rounded-full bg-accent-500 px-5 py-3 text-sm font-medium text-ink-950 shadow-sm shadow-accent-500/30 hover:bg-accent-400"
+                class="rounded-full bg-[#f5f0e8] px-6 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-black hover:bg-white"
                 href="#contact"
               >
                 Prendre rendez-vous
               </a>
               <a
-                class="rounded-full border border-white/15 bg-ink-950 px-5 py-3 text-sm font-medium text-white/90 hover:bg-ink-900"
+                class="rounded-full border border-[#f5f0e8]/20 bg-black px-6 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-[#f5f0e8] hover:bg-[#111]"
                 href="#prestations"
               >
-                Voir les prestations
+                Découvrir
               </a>
             </div>
 
-            <div data-hero class="mt-10 grid grid-cols-2 gap-4 text-sm text-white/75">
-              <div class="rounded-2xl border border-white/10 bg-ink-950 p-4 shadow-lg shadow-black/40">
-                <p class="font-medium text-white">Séances ciblées</p>
-                <p class="mt-1 text-white/70">Sport, détente, mobilité</p>
+            <div data-hero class="mt-14 grid gap-3 text-sm text-[#f5f0e8]/70 sm:grid-cols-3">
+              <div class="border-y border-[#f5f0e8]/10 py-5">
+                <p class="text-xs uppercase tracking-[0.22em] text-[#f5f0e8]/45">01</p>
+                <p class="mt-3 font-medium text-[#f5f0e8]">Recovery</p>
+                <p class="mt-1">Sport, détente, mobilité</p>
               </div>
-              <div class="rounded-2xl border border-white/10 bg-ink-950 p-4 shadow-lg shadow-black/40">
-                <p class="font-medium text-white">Suivi simple</p>
-                <p class="mt-1 text-white/70">WhatsApp / Calendly</p>
+              <div class="border-y border-[#f5f0e8]/10 py-5">
+                <p class="text-xs uppercase tracking-[0.22em] text-[#f5f0e8]/45">02</p>
+                <p class="mt-3 font-medium text-[#f5f0e8]">Performance</p>
+                <p class="mt-1">Prévention, préparation, retour à l’effort</p>
+              </div>
+              <div class="border-y border-[#f5f0e8]/10 py-5">
+                <p class="text-xs uppercase tracking-[0.22em] text-[#f5f0e8]/45">03</p>
+                <p class="mt-3 font-medium text-[#f5f0e8]">Booking</p>
+                <p class="mt-1">Calendly, contact rapide, suivi clair</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="apropos" class="mx-auto max-w-6xl px-5 py-16 md:py-24">
-        <div data-reveal class="grid gap-10 md:grid-cols-2 md:items-start">
+      <section id="apropos" class="mx-auto max-w-7xl px-5 py-20 md:py-28">
+        <div data-reveal class="grid gap-12 md:grid-cols-[1.1fr_0.9fr] md:items-start">
           <div>
-            <p class="text-sm font-medium tracking-wide text-white/70">À propos</p>
-            <h2 class="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">Une approche complète</h2>
-            <p class="mt-5 leading-relaxed text-white/75">
+            <p class="text-xs font-semibold uppercase tracking-[0.28em] text-[#f5f0e8]/55">Concept</p>
+            <h2 class="mt-5 max-w-3xl text-4xl font-semibold uppercase leading-[0.95] tracking-[-0.05em] md:text-7xl">
+              Un espace dédié au corps en mouvement.
+            </h2>
+            <p class="mt-7 max-w-xl leading-relaxed text-[#f5f0e8]/70">
               Chaque séance est construite pour répondre à un besoin concret : relâcher une zone tendue, améliorer la
               récupération, ou simplement te remettre bien dans ton corps.
             </p>
           </div>
           <div class="grid gap-4">
-            <div class="rounded-2xl border border-white/10 bg-ink-950 p-5">
-              <p class="font-medium text-white">Mission</p>
-              <p class="mt-2 text-white/70">Améliorer ton confort au quotidien et t’aider à bouger sans gêne.</p>
+            <div class="border border-[#f5f0e8]/10 bg-[#0b0b0b] p-6">
+              <p class="text-xs uppercase tracking-[0.24em] text-[#f5f0e8]/45">Mission</p>
+              <p class="mt-4 text-lg font-medium text-[#f5f0e8]">Améliorer ton confort au quotidien et t’aider à bouger sans gêne.</p>
             </div>
-            <div class="rounded-2xl border border-white/10 bg-ink-950 p-5">
-              <p class="font-medium text-white">Objectifs</p>
-              <p class="mt-2 text-white/70">Prévenir les douleurs, optimiser la mobilité et soutenir la performance.</p>
+            <div class="border border-[#f5f0e8]/10 bg-[#0b0b0b] p-6">
+              <p class="text-xs uppercase tracking-[0.24em] text-[#f5f0e8]/45">Objectifs</p>
+              <p class="mt-4 text-lg font-medium text-[#f5f0e8]">Prévenir les douleurs, optimiser la mobilité et soutenir la performance.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="prestations" class="border-y border-white/10 bg-ink-950">
-        <div class="mx-auto max-w-6xl px-5 py-16 md:py-24">
+      <section id="prestations" class="border-y border-[#f5f0e8]/10 bg-[#f5f0e8] text-black">
+        <div class="mx-auto max-w-7xl px-5 py-20 md:py-28">
           <div data-reveal class="max-w-2xl">
-            <p class="text-sm font-medium tracking-wide text-white/70">Prestations</p>
-            <h2 class="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">Des services clairs et efficaces</h2>
-            <p class="mt-5 leading-relaxed text-white/75">
+            <p class="text-xs font-semibold uppercase tracking-[0.28em] text-black/50">Services</p>
+            <h2 class="mt-5 text-4xl font-semibold uppercase leading-[0.95] tracking-[-0.05em] md:text-7xl">Train. Recover. Reset.</h2>
+            <p class="mt-7 leading-relaxed text-black/65">
               Des formats simples, avec une intention précise pour chaque séance.
             </p>
           </div>
 
-          <div class="mt-10 grid gap-5 md:grid-cols-2">
-            <article data-reveal class="rounded-2xl border border-white/10 bg-black p-6 shadow-lg shadow-black/40">
-              <h3 class="text-lg font-semibold">Massage Sportif</h3>
-              <p class="mt-2 text-white/70">Récupération musculaire, tensions, préparation / retour d’effort.</p>
-              <p class="mt-4 text-sm font-medium text-white/80">Disponible</p>
+          <div class="mt-12 grid border-t border-black/15 md:grid-cols-2">
+            <article data-reveal class="border-b border-black/15 py-8 md:border-r md:pr-8">
+              <p class="text-xs uppercase tracking-[0.24em] text-black/45">01</p>
+              <h3 class="mt-4 text-2xl font-semibold uppercase tracking-[-0.03em]">Massage Sportif</h3>
+              <p class="mt-3 text-black/65">Récupération musculaire, tensions, préparation / retour d’effort.</p>
+              <p class="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-black/55">Disponible</p>
             </article>
-            <article data-reveal class="rounded-2xl border border-white/10 bg-black p-6 shadow-lg shadow-black/40">
-              <h3 class="text-lg font-semibold">Cupping Therapy</h3>
-              <p class="mt-2 text-white/70">Ventouses pour relâcher les adhérences et améliorer la souplesse.</p>
-              <p class="mt-4 text-sm font-medium text-white/80">Sur demande</p>
+            <article data-reveal class="border-b border-black/15 py-8 md:pl-8">
+              <p class="text-xs uppercase tracking-[0.24em] text-black/45">02</p>
+              <h3 class="mt-4 text-2xl font-semibold uppercase tracking-[-0.03em]">Cupping Therapy</h3>
+              <p class="mt-3 text-black/65">Ventouses pour relâcher les adhérences et améliorer la souplesse.</p>
+              <p class="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-black/55">Sur demande</p>
             </article>
-            <article data-reveal class="rounded-2xl border border-white/10 bg-black p-6 shadow-lg shadow-black/40">
-              <h3 class="text-lg font-semibold">Préparation Physique</h3>
-              <p class="mt-2 text-white/70">Programme sur mesure selon tes objectifs et ton niveau.</p>
-              <p class="mt-4 text-sm font-medium text-white/80">Bientôt</p>
+            <article data-reveal class="border-b border-black/15 py-8 md:border-r md:pr-8">
+              <p class="text-xs uppercase tracking-[0.24em] text-black/45">03</p>
+              <h3 class="mt-4 text-2xl font-semibold uppercase tracking-[-0.03em]">Préparation Physique</h3>
+              <p class="mt-3 text-black/65">Programme sur mesure selon tes objectifs et ton niveau.</p>
+              <p class="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-black/55">Bientôt</p>
             </article>
-            <article data-reveal class="rounded-2xl border border-white/10 bg-black p-6 shadow-lg shadow-black/40">
-              <h3 class="text-lg font-semibold">Ostéo Massage</h3>
-              <p class="mt-2 text-white/70">Travail ciblé pour la mobilité et les zones sensibles.</p>
-              <p class="mt-4 text-sm font-medium text-white/80">Disponible</p>
+            <article data-reveal class="border-b border-black/15 py-8 md:pl-8">
+              <p class="text-xs uppercase tracking-[0.24em] text-black/45">04</p>
+              <h3 class="mt-4 text-2xl font-semibold uppercase tracking-[-0.03em]">Ostéo Massage</h3>
+              <p class="mt-3 text-black/65">Travail ciblé pour la mobilité et les zones sensibles.</p>
+              <p class="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-black/55">Disponible</p>
             </article>
           </div>
         </div>
       </section>
 
-      <section id="galerie" class="mx-auto max-w-6xl px-5 py-16 md:py-24">
+      <section id="galerie" class="mx-auto max-w-7xl px-5 py-20 md:py-28">
         <div data-reveal class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div class="max-w-2xl">
-            <p class="text-sm font-medium tracking-wide text-white/70">Visuels</p>
-            <h2 class="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">Ambiance & séances</h2>
+            <p class="text-xs font-semibold uppercase tracking-[0.28em] text-[#f5f0e8]/55">Studio</p>
+            <h2 class="mt-5 text-4xl font-semibold uppercase leading-[0.95] tracking-[-0.05em] md:text-7xl">Ambiance & séances</h2>
           </div>
-          <p class="text-sm text-white/70">Photos utilisées : dossier Francis</p>
+          <p class="text-sm text-[#f5f0e8]/60">Photos utilisées : dossier Francis</p>
         </div>
 
         <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -290,10 +303,10 @@ onUnmounted(() => {
             v-for="src in galleryPhotos"
             :key="src"
             data-reveal
-            class="group relative overflow-hidden rounded-2xl border border-white/10 bg-ink-950 shadow-lg shadow-black/40"
+            class="group relative overflow-hidden border border-[#f5f0e8]/10 bg-[#0b0b0b]"
           >
             <img
-              class="h-56 w-full object-cover object-[50%_20%] transition duration-500 group-hover:scale-[1.03]"
+              class="h-72 w-full object-cover object-[50%_20%] grayscale transition duration-500 group-hover:scale-[1.03] group-hover:grayscale-0"
               :src="src"
               alt=""
             />
@@ -301,18 +314,18 @@ onUnmounted(() => {
         </div>
       </section>
 
-      <section id="contact" class="border-t border-white/10 bg-ink-950">
-        <div class="mx-auto grid max-w-6xl gap-8 px-5 py-16 md:grid-cols-2 md:py-24">
+      <section id="contact" class="border-t border-[#f5f0e8]/10 bg-[#050505]">
+        <div class="mx-auto grid max-w-7xl gap-10 px-5 py-20 md:grid-cols-2 md:py-28">
           <div data-reveal>
-            <p class="text-sm font-medium tracking-wide text-white/70">Contact</p>
-            <h2 class="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">Prendre rendez-vous</h2>
-            <p class="mt-5 leading-relaxed text-white/75">
+            <p class="text-xs font-semibold uppercase tracking-[0.28em] text-[#f5f0e8]/55">Booking</p>
+            <h2 class="mt-5 text-4xl font-semibold uppercase leading-[0.95] tracking-[-0.05em] md:text-7xl">Book your session.</h2>
+            <p class="mt-7 max-w-xl leading-relaxed text-[#f5f0e8]/70">
               Dis-moi ce dont tu as besoin (zone, douleur, objectif). Je te propose un créneau et un format adapté.
             </p>
-            <div class="mt-8 rounded-2xl border border-white/10 bg-black p-4 shadow-lg shadow-black/40">
-              <p class="text-sm font-medium text-white">Calendrier</p>
-              <p class="mt-1 text-sm text-white/70">Choisis un créneau directement dans le calendrier.</p>
-              <div class="mt-4 overflow-hidden rounded-xl border border-white/10 bg-ink-950">
+            <div class="mt-10 border border-[#f5f0e8]/10 bg-black p-4">
+              <p class="text-xs font-semibold uppercase tracking-[0.22em] text-[#f5f0e8]/60">Calendrier</p>
+              <p class="mt-2 text-sm text-[#f5f0e8]/70">Choisis un créneau directement dans le calendrier.</p>
+              <div class="mt-4 overflow-hidden border border-[#f5f0e8]/10 bg-black">
                 <iframe
                   class="block h-[720px] w-full"
                   :src="calendlyEmbedUrl"
@@ -322,7 +335,7 @@ onUnmounted(() => {
               </div>
               <div class="mt-4 flex flex-wrap gap-3">
                 <a
-                  class="rounded-full border border-white/15 bg-ink-950 px-5 py-3 text-sm font-medium text-white/90 hover:bg-ink-900"
+                  class="rounded-full border border-[#f5f0e8]/20 bg-black px-6 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-[#f5f0e8] hover:bg-[#111]"
                   :href="calendlyUrl"
                   target="_blank"
                   rel="noreferrer"
@@ -333,19 +346,19 @@ onUnmounted(() => {
             </div>
           </div>
 
-          <div data-reveal class="rounded-2xl border border-white/10 bg-black p-6 shadow-lg shadow-black/40">
-            <p class="text-sm font-medium text-white">Formulaire de contact</p>
-            <p class="mt-1 text-sm text-white/70">
+          <div data-reveal class="border border-[#f5f0e8]/10 bg-black p-6">
+            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-[#f5f0e8]/60">Formulaire de contact</p>
+            <p class="mt-3 text-sm text-[#f5f0e8]/70">
               Tu peux envoyer un message, même si tu ne trouves pas de créneau parfait.
             </p>
 
             <form class="mt-5 grid gap-4" @submit.prevent="submitContact">
               <div class="grid gap-2">
-                <label class="text-sm font-medium text-white/80" for="name">Nom</label>
+                <label class="text-sm font-medium text-[#f5f0e8]/80" for="name">Nom</label>
                 <input
                   id="name"
                   v-model="form.name"
-                  class="h-11 rounded-xl border border-white/10 bg-ink-950 px-4 text-sm text-white outline-none ring-accent-500/40 placeholder:text-white/40 focus:ring-2"
+                  class="h-12 border border-[#f5f0e8]/10 bg-[#0b0b0b] px-4 text-sm text-[#f5f0e8] outline-none ring-[#f5f0e8]/30 placeholder:text-[#f5f0e8]/35 focus:ring-2"
                   type="text"
                   autocomplete="name"
                   placeholder="Votre nom"
@@ -355,11 +368,11 @@ onUnmounted(() => {
 
               <div class="grid gap-4 md:grid-cols-2">
                 <div class="grid gap-2">
-                  <label class="text-sm font-medium text-white/80" for="email">Email</label>
+                  <label class="text-sm font-medium text-[#f5f0e8]/80" for="email">Email</label>
                   <input
                     id="email"
                     v-model="form.email"
-                    class="h-11 rounded-xl border border-white/10 bg-ink-950 px-4 text-sm text-white outline-none ring-accent-500/40 placeholder:text-white/40 focus:ring-2"
+                    class="h-12 border border-[#f5f0e8]/10 bg-[#0b0b0b] px-4 text-sm text-[#f5f0e8] outline-none ring-[#f5f0e8]/30 placeholder:text-[#f5f0e8]/35 focus:ring-2"
                     type="email"
                     autocomplete="email"
                     placeholder="vous@email.com"
@@ -367,11 +380,11 @@ onUnmounted(() => {
                   />
                 </div>
                 <div class="grid gap-2">
-                  <label class="text-sm font-medium text-white/80" for="phone">Téléphone (optionnel)</label>
+                  <label class="text-sm font-medium text-[#f5f0e8]/80" for="phone">Téléphone (optionnel)</label>
                   <input
                     id="phone"
                     v-model="form.phone"
-                    class="h-11 rounded-xl border border-white/10 bg-ink-950 px-4 text-sm text-white outline-none ring-accent-500/40 placeholder:text-white/40 focus:ring-2"
+                    class="h-12 border border-[#f5f0e8]/10 bg-[#0b0b0b] px-4 text-sm text-[#f5f0e8] outline-none ring-[#f5f0e8]/30 placeholder:text-[#f5f0e8]/35 focus:ring-2"
                     type="tel"
                     autocomplete="tel"
                     placeholder="+32 ..."
@@ -380,18 +393,18 @@ onUnmounted(() => {
               </div>
 
               <div class="grid gap-2">
-                <label class="text-sm font-medium text-white/80" for="message">Message</label>
+                <label class="text-sm font-medium text-[#f5f0e8]/80" for="message">Message</label>
                 <textarea
                   id="message"
                   v-model="form.message"
-                  class="min-h-[120px] resize-y rounded-xl border border-white/10 bg-ink-950 px-4 py-3 text-sm text-white outline-none ring-accent-500/40 placeholder:text-white/40 focus:ring-2"
+                  class="min-h-[120px] resize-y border border-[#f5f0e8]/10 bg-[#0b0b0b] px-4 py-3 text-sm text-[#f5f0e8] outline-none ring-[#f5f0e8]/30 placeholder:text-[#f5f0e8]/35 focus:ring-2"
                   placeholder="Expliquez votre besoin (douleurs, zone, objectif, disponibilité…)"
                   required
                 />
               </div>
 
               <button
-                class="inline-flex h-11 items-center justify-center rounded-xl bg-accent-500 px-5 text-sm font-medium text-ink-950 shadow-sm shadow-accent-500/30 hover:bg-accent-400 disabled:cursor-not-allowed disabled:opacity-60"
+                class="inline-flex h-12 items-center justify-center rounded-full bg-[#f5f0e8] px-6 text-xs font-semibold uppercase tracking-[0.18em] text-black hover:bg-white disabled:cursor-not-allowed disabled:opacity-60"
                 type="submit"
                 :disabled="!canSubmit"
               >
@@ -399,28 +412,28 @@ onUnmounted(() => {
                 <span v-else>Envoyer</span>
               </button>
 
-              <p v-if="submitState === 'success'" class="text-sm text-white/70">Message envoyé.</p>
-              <p v-else-if="submitState === 'error'" class="text-sm text-white/70">
+              <p v-if="submitState === 'success'" class="text-sm text-[#f5f0e8]/70">Message envoyé.</p>
+              <p v-else-if="submitState === 'error'" class="text-sm text-[#f5f0e8]/70">
                 Impossible d’envoyer le message. Réessaie ou contacte directement par email.
               </p>
             </form>
 
-            <div class="mt-8 grid gap-4 text-sm text-white/80">
+            <div class="mt-8 grid gap-4 text-sm text-[#f5f0e8]/80">
               <div>
-                <p class="font-medium text-white">Adresse</p>
-                <p class="mt-1 text-white/70">Ixelles, Bruxelles</p>
+                <p class="font-medium text-[#f5f0e8]">Adresse</p>
+                <p class="mt-1 text-[#f5f0e8]/70">Ixelles, Bruxelles</p>
               </div>
               <div>
-                <p class="font-medium text-white">Email</p>
-                <p class="mt-1 text-white/70">contact@exemple.com</p>
+                <p class="font-medium text-[#f5f0e8]">Email</p>
+                <p class="mt-1 text-[#f5f0e8]/70">contact@exemple.com</p>
               </div>
               <div>
-                <p class="font-medium text-white">Réseaux</p>
-                <p class="mt-1 text-white/70">Instagram / LinkedIn / Facebook</p>
+                <p class="font-medium text-[#f5f0e8]">Réseaux</p>
+                <p class="mt-1 text-[#f5f0e8]/70">Instagram / LinkedIn / Facebook</p>
               </div>
               <div class="pt-2">
                 <a
-                  class="inline-flex rounded-full border border-white/15 bg-ink-950 px-4 py-2 font-medium text-white/90 hover:bg-ink-900"
+                  class="inline-flex rounded-full border border-[#f5f0e8]/20 bg-black px-5 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#f5f0e8] hover:bg-[#111]"
                   href="#top"
                 >
                   Retour en haut
@@ -430,8 +443,8 @@ onUnmounted(() => {
           </div>
         </div>
 
-        <footer class="border-t border-white/10">
-          <div class="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-8 text-sm text-white/60 md:flex-row md:items-center md:justify-between">
+        <footer class="border-t border-[#f5f0e8]/10">
+          <div class="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-8 text-sm text-[#f5f0e8]/55 md:flex-row md:items-center md:justify-between">
             <p>© {{ new Date().getFullYear() }} Francis Massage. Tous droits réservés.</p>
             <p>Mentions légales</p>
           </div>
